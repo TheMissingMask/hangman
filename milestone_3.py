@@ -1,22 +1,42 @@
 import random
 
+def check_guess(guess,word,hidden):
+    guess=guess.lower()
+    word=word.lower()
+    if guess in word:
+        count,i=0,0
+        for x in word:
+            if x==guess:
+                count+=1
+                hidden[i]=guess
+            i+=1
+        print('%s occurs %s times in the word'%(guess,count))
+        return hidden
+    else:
+        print('Sorry %s is not in the word'%(guess))
+        return False
+    
+def ask_for_input(word,hidden):
+    
+    while True:
+        guess=input('Please enter a single letter:\n')
+        if len(guess)!=1:
+            guess=input('Invalid letter.  Please, enter a single alphabetical character.')
+        elif guess.isalpha()==False:
+            guess=input('Invalid letter.  Please, enter a single alphabetical character.')
+        else:
+            print('You have guessed %s\n'%(guess))
+            break
+    hidden=check_guess(guess,word,hidden)
+
+def printHidden(hidden):
+    outString=''
+    for i in hidden:
+        outString+=i
+    print(outString)
+    
 word_list=['rundown','tapout','carnival','inside','underground']
 word=random.choice(word_list)
+hidden=['_']*len(word)
 
-while True:
-    guess=input('Please enter a single letter:\n')
-    if len(guess)!=1:
-        guess=input('Invalid letter.  Please, enter a single alphabetical character.')
-    elif guess.isalpha()==False:
-        guess=input('Invalid letter.  Please, enter a single alphabetical character.')
-    else:
-        print('You have guessed %s\n'%(guess))
-        break
-if guess in word:
-    count=0
-    for x in word:
-        if x==guess:
-            count+=1
-    print('%s occurs %s times in the word'%(guess,count))
-else:
-    print('Sorry %s is not in the word'%(guess))
+ask_for_input(word,hidden)
