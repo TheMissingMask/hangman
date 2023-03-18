@@ -46,8 +46,15 @@ class Hangman:
                 self.list_of_guesses.append(self.guess)
                 if self.check_guess(self.guess)==False:
                     self.num_lives-=1
+                    if self.num_lives<=0:
+                        print('You lose')
+                        break
                 else:
                     self.word_guessed=self.check_guess(self.guess)
+                    print(self.word_guessed)
+                    if '_' not in self.word_guessed:
+                        print('You win!')
+                        break
 
 
 word_list=['rundown','tapout','carnival','inside','underground']
