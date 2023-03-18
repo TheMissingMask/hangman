@@ -1,6 +1,4 @@
-#!/usr/bin/python
-
-#####start with simpler version of the code and then tidy up later
+# simple initial hangman code before doing the AICore tutorials on this
 
 import random
 from random_word import RandomWords
