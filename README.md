@@ -1,9 +1,22 @@
 # Hangman
-Hangman is a classic game in which a player thinks of a word and the other player tries to guess that word within a certain amount of attempts.
 
-This is an implementation of the Hangman game, where the computer thinks of a word and the user tries to guess it. 
+## this is a Python code to play a good ol' classic game of hangman
 
-It is a work in progress and at the moment just has a few options available, variable names that I do not like, and only takes one user input, but does check if there is only one letter and has a check against upper vs lower case user input
-I intend to eventually rewrite this in the style of coding and variable names I like, but using the same basic workflow and overall approach; will also need to allow two words since sometimes hangman does have those
+## a note on the files found in this repository
 
-Annnnd now we have some other stuff including a function...some graphics would be nice
+- there are the various **milestone_x.py** files which are sort of irrelevant but necessary to pass the checkpoints in the course
+- the main complete code is in **hangman.py**
+- this should be able to run internally provided you have the required Python modules:
+
+    - random
+      > pip install random
+    - random_word
+      > pip install random-word
+
+To play, run:
+
+    > python hangman.py
+
+Then, when prompted, enter a single letter at a time.  If the letter is in the word, it's position will be shown.  If not, you lose a guess.  You have ten guesses total before the virtual stick person is hung. :|
+
+### Enjoy!
