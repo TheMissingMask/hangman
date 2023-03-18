@@ -20,16 +20,99 @@ class Hangman:
             outString+=i
         print(outString)
 
+    def graphic(self,nGuess):
+
+        self.guessDict={ # for the same of suspense, start drawing the hangman as more failed guesses take place...
+                0:'''
+                
+                ''',
+                1:'''
+                .
+                ''',
+                2:
+                '''
+                ..
+                ''',
+                3:'''
+                ...
+                ''',
+        4:'''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''',
+        5:'''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''',
+        6:'''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''',
+        7:'''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''',
+        8:'''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''',
+        9:'''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''',
+        10:'''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+'''
+}
+
+        print(self.guessDict[self.nGuess])
+
 
     def getGuess(self): # get the user to guess and check it is a viable input
 
         self.guessList=[]
 
-        while self.nGuess>=0: # while there are still guesses left
+        self.nGuess=0 # start with no wrong guesses
+
+        while True:
 
             self.guess=input('Please enter a letter or the word [solved]:\n') # want a single letter or the word 'solved'
             self.guess=self.guess.lower()
-
 
             if self.guess=='solved':
                 self.guess=self.guessWord(word) # option to guess the whole word
@@ -57,9 +140,11 @@ class Hangman:
                         self.printHidden(self.hidden)
                 else:
                     print('\n%s does not appear in the word\n'%(self.guess))
-                    self.nGuess-=1
-                    if self.nGuess==-1:
+                    self.nGuess+=1
+                    self.graphic(self.nGuess)
+                    if self.nGuess==10:
                         print('No more guesses, I\'m afraid...\nThe word was %s'%(self.word))
+                        break
 
         return(self.guess)
 
@@ -90,3 +175,4 @@ hidden=['_']*len(word)
 hangman.printHidden(hidden) # this just prints out underscores to indicate the number of letters
 print('\n')
 hangman.getGuess()
+print('\n') # just have an extra bit of whitespace
