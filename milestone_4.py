@@ -25,10 +25,10 @@ class Hangman:
                     count+=1
                     self.word_guessed[i]=self.guess
                 i+=1
-            print('Good guess! %s is in the word'%(self.guess))
+            print('Good guess! {x} is in the word'.format(x=self.guess)
             return self.word_guessed
         else:
-            print('Sorry %s is not in the word'%(guess))
+            print('Sorry {x} is not in the word'.format(x=self.guess))
             return False
 
     def ask_for_input(self):
