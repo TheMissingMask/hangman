@@ -26,10 +26,9 @@ class Hangman:
                     self.word_guessed[i]=self.guess
                 i+=1
             print('Good guess! %s is in the word'%(self.guess))
-#            print('%s occurs %s times in the word'%(guess,count))
-#            return self.word_guessed
-#        else:
-#            print('Sorry %s is not in the word'%(guess))
+            return self.word_guessed
+        else:
+            print('Sorry %s is not in the word'%(guess))
             return False
 
     def ask_for_input(self):
@@ -45,7 +44,12 @@ class Hangman:
             else:
                 print('You have guessed %s\n'%(self.guess))
                 self.list_of_guesses.append(self.guess)
-                break
+                if self.check_guess(self.guess)==False:
+                    self.num_lives-=1
+                else:
+                    self.word_guessed=self.check_guess(self.guess)
+
+
 word_list=['rundown','tapout','carnival','inside','underground']
 hangman=Hangman(word_list)
 hangman.ask_for_input()
