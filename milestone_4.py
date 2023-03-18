@@ -25,7 +25,7 @@ class Hangman:
                     count+=1
                     self.word_guessed[i]=self.guess
                 i+=1
-            print('Good guess! {x} is in the word'.format(x=self.guess))
+            print('Good guess! {guess} is in the word'.format(guess=self.guess))
             return self.word_guessed
         else:
             print('Sorry {x} is not in the word'.format(x=self.guess))
