@@ -60,3 +60,4 @@ class Hangman:
 word_list=['rundown','tapout','carnival','inside','underground']
 hangman=Hangman(word_list)
 hangman.ask_for_input()
+# this is here just to recomit and see if it fixes the stall in verifying tasks
